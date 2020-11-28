@@ -17,8 +17,8 @@ const App = () => {
   const [dayOfYear, setDayOfYear] = useState(null);
   const [weekNumber, setweekNumber] = useState(null);
   const [timezone, setTimezone] = useState(null);
-  const [icon, setIcon] = useState("sun");
-  const [backgroundImage, setBackgroundImage] = useState("daylight");
+  const [icon, setIcon] = useState();
+  const [backgroundImage, setBackgroundImage] = useState();
   const [errorMessage, setErrorMessage] = useState("");
 
   // ------ Call IP Address API ------ //
@@ -65,9 +65,21 @@ const App = () => {
   };
 
   const greetings = {
-    morning: "Good morning, it’s currently",
-    afternoon: "Good afternoon, it’s currently",
-    evening: "Good evening, it’s currently",
+    morning: {
+      label: "morning",
+      icon: "sun",
+      bgImage: "daylight",
+    },
+    afternoon: {
+      label: "afternoon",
+      icon: "sun",
+      bgImage: "daylight",
+    },
+    evening: {
+      label: "evening",
+      icon: "moon",
+      bgImage: "starlight",
+    },
   };
 
   // ------ Perform side effects after component has mounted ------ //
@@ -84,17 +96,17 @@ const App = () => {
     }
 
     if (0 < currentHour < 4 || 19 < currentHour < 25) {
-      setGreeting(greetings.evening);
-      setIcon("moon");
-      setBackgroundImage("starlight");
+      setGreeting(`Good ${greetings.evening.label}, it's currently`);
+      setIcon(greetings.evening.icon);
+      setBackgroundImage(greetings.evening.bgImage);
     } else if (5 < currentHour < 12) {
-      setGreeting(greetings.morning);
-      setIcon("sun");
-      setBackgroundImage("daylight");
+      setGreeting(`Good ${greetings.morning.label}, it's currently`);
+      setIcon(greetings.morning.icon);
+      setBackgroundImage(greetings.morning.bgImage);
     } else if (12 < currentHour < 18) {
-      setGreeting(greetings.afternoon);
-      setIcon("sun");
-      setBackgroundImage("daylight");
+      setGreeting(`Good ${greetings.afternoon.label}, it's currently`);
+      setIcon(greetings.afternoon.icon);
+      setBackgroundImage(greetings.afternoon.bgImage);
     }
 
     return () => {
