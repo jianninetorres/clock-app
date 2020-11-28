@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "reset-css";
 
 const App = () => {
   const IP_API = "https://freegeoip.app/json/";
