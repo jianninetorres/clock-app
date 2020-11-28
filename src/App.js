@@ -9,7 +9,8 @@ const App = () => {
   const [ipAddress, setIPAddress] = useState(null);
   const [city, setCity] = useState(null);
   const [regionCode, setRegionCode] = useState(null);
-  const [time, setTime] = useState(null);
+  const [currentHour, setCurrentHour] = useState(null);
+  const [currentMinute, setCurrentMinute] = useState(null);
   const [dayOfWeek, setDayOfWeek] = useState(null);
   const [dayOfYear, setDayOfYear] = useState(null);
   const [weekNumber, setweekNumber] = useState(null);
@@ -53,7 +54,9 @@ const App = () => {
     const data = await response.json();
 
     if (data.datetime !== "") {
-      setTime(new Date(data.datetime));
+      let time = new Date(data.datetime);
+      setCurrentHour(time.getHours());
+      setCurrentMinute(time.getMinutes());
     } else {
       setErrorMessage("Uh oh");
     }
