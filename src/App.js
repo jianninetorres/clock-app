@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 const App = () => {
+  const IP_API = "https://freegeoip.app/json/";
+  const WORLDTIME_API = "http://worldtimeapi.org/api/ip/";
+
   // ------ Set states ------ //
   const [ipAddress, setIPAddress] = useState(null);
   const [city, setCity] = useState(null);
@@ -17,7 +20,7 @@ const App = () => {
 
   // ------ Call IP Address API ------ //
   const getIPAddress = async () => {
-    const URL = "https://freegeoip.app/json/";
+    const URL = IP_API;
     const response = await fetch(URL);
     const data = await response.json();
 
@@ -28,8 +31,8 @@ const App = () => {
     }
   };
 
-  const getTime = async () => {
-    const URL = "http://worldtimeapi.org/api/ip/";
+  const getTimeData = async () => {
+    const URL = WORLDTIME_API;
     const response = await fetch(URL);
     const data = await response.json();
 
@@ -47,7 +50,7 @@ const App = () => {
   // ------ Perform side effects after component has mounted ------ //
   useEffect(() => {
     getIPAddress();
-    getTime();
+    getTimeData();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
