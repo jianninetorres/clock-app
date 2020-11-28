@@ -37,7 +37,6 @@ const App = () => {
     const data = await response.json();
 
     if (data.client_ip !== "") {
-      setTime(new Date(data.datetime));
       setDayOfWeek(data.day_of_week);
       setDayOfYear(data.day_of_year);
       setweekNumber(data.week_number);
@@ -47,10 +46,25 @@ const App = () => {
     }
   };
 
+  const getCurrentTime = async () => {
+    const URL = WORLDTIME_API;
+    const response = await fetch(URL);
+    const data = await response.json();
+
+    if (data.datetime !== "") {
+      setTime(new Date(data.datetime));
+    } else {
+      setErrorMessage("Uh oh");
+    }
+  };
+
   // ------ Perform side effects after component has mounted ------ //
   useEffect(() => {
     getIPAddress();
     getTimeData();
+    setInterval(() => {
+      getCurrentTime();
+    }, 1000);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
