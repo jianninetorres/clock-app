@@ -1,16 +1,14 @@
 import React from "react";
 
 const CurrentTime = ({ currentHour, currentMinute, timezone }) => {
+  const hour = currentHour === 0 ? 12 : currentHour;
+  const minute = currentMinute < 10 ? `0${currentMinute}` : currentMinute;
+
   return (
     <div>
-      {currentHour && currentMinute && (
+      {hour && minute && (
         <h2>
-          {currentHour}:
-          {currentMinute
-            ? currentMinute < 9
-              ? `0${currentMinute}`
-              : currentMinute
-            : ""}
+          {hour}:{minute}
         </h2>
       )}
 
