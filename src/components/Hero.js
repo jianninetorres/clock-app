@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CurrentTime from "./CurrentTime";
 import styled from "styled-components";
 
@@ -17,7 +17,7 @@ const Hero = ({
 }) => {
   return (
     <HeroStyles>
-      <p>{greeting}</p>
+      {currentHour && currentMinute && <p>{greeting}</p>}
       <CurrentTime
         currentHour={currentHour}
         currentMinute={currentMinute}

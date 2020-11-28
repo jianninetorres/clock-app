@@ -7,6 +7,7 @@ const App = () => {
   const WORLDTIME_API = "http://worldtimeapi.org/api/ip/";
 
   // ------ Set states ------ //
+  const [greeting, setGreeting] = useState(null);
   const [ipAddress, setIPAddress] = useState(null);
   const [city, setCity] = useState(null);
   const [regionCode, setRegionCode] = useState(null);
@@ -16,7 +17,6 @@ const App = () => {
   const [dayOfYear, setDayOfYear] = useState(null);
   const [weekNumber, setweekNumber] = useState(null);
   const [timezone, setTimezone] = useState(null);
-  const [greeting, setGreeting] = useState("Good morning, it's currently");
   const [icon, setIcon] = useState("sun");
   const [backgroundImage, setBackgroundImage] = useState("daylight");
   const [errorMessage, setErrorMessage] = useState("");
@@ -64,6 +64,12 @@ const App = () => {
     }
   };
 
+  const greetings = {
+    morning: "Good morning, it’s currently",
+    afternoon: "Good afternoon, it’s currently",
+    evening: "Good evening, it’s currently",
+  };
+
   // ------ Perform side effects after component has mounted ------ //
   useEffect(() => {
     let mounted = true;
@@ -76,6 +82,21 @@ const App = () => {
         getCurrentTime();
       }, 1000);
     }
+
+    if (0 < currentHour < 4 || 19 < currentHour < 25) {
+      setGreeting(greetings.evening);
+      setIcon("moon");
+      setBackgroundImage("starlight");
+    } else if (5 < currentHour < 12) {
+      setGreeting(greetings.morning);
+      setIcon("sun");
+      setBackgroundImage("daylight");
+    } else if (12 < currentHour < 18) {
+      setGreeting(greetings.afternoon);
+      setIcon("sun");
+      setBackgroundImage("daylight");
+    }
+
     return () => {
       mounted = false;
     };
