@@ -61,11 +61,17 @@ const App = () => {
 
   // ------ Perform side effects after component has mounted ------ //
   useEffect(() => {
-    getIPAddress();
-    getTimeData();
-    setInterval(() => {
-      getCurrentTime();
-    }, 1000);
+    let mounted = true;
+    if (mounted) {
+      getIPAddress();
+      getTimeData();
+      setInterval(() => {
+        getCurrentTime();
+      }, 1000);
+    }
+    return () => {
+      mounted = false;
+    };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
