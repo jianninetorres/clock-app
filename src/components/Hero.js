@@ -1,4 +1,5 @@
 import React from "react";
+import CurrentTime from "./CurrentTime";
 import styled from "styled-components";
 
 const HeroStyles = styled.div`
@@ -17,6 +18,10 @@ const Hero = ({
   return (
     <HeroStyles>
       <p>{greeting}</p>
+      <CurrentTime
+        currentHour={currentHour}
+        currentMinute={currentMinute}
+        timezone={timezone}
       />
       <p>
         in {city}, {regionCode}
