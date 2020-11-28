@@ -34,6 +34,7 @@ const App = () => {
     }
   };
 
+  // get time-related data
   const getTimeData = async () => {
     const URL = WORLDTIME_API;
     const response = await fetch(URL);
@@ -69,6 +70,8 @@ const App = () => {
     if (mounted) {
       getIPAddress();
       getTimeData();
+
+      // update current time every second
       setInterval(() => {
         getCurrentTime();
       }, 1000);
