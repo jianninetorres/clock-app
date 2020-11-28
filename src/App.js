@@ -42,7 +42,7 @@ const App = () => {
       setDayOfWeek(data.day_of_week);
       setDayOfYear(data.day_of_year);
       setweekNumber(data.week_number);
-      setTimezone(data.timezone);
+      setTimezone(data.abbreviation);
     } else {
       setErrorMessage("Uh oh");
     }
