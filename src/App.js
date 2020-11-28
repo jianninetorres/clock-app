@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "reset-css";
+import Hero from "./components/Hero";
 
 const App = () => {
   const IP_API = "https://freegeoip.app/json/";
@@ -81,7 +82,14 @@ const App = () => {
 
   return (
     <>
-      <p>{greeting}</p>
+      <Hero
+        greeting={greeting}
+        currentHour={currentHour}
+        currentMinute={currentMinute}
+        city={city}
+        regionCode={regionCode}
+        timezone={timezone}
+      />
     </>
   );
 };
