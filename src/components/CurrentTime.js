@@ -6,7 +6,11 @@ const CurrentTime = ({ currentHour, currentMinute, timezone }) => {
       {currentHour && currentMinute && (
         <h2>
           {currentHour}:
-          {currentMinute ? (currentMinute < 9 ? `0${currentMinute}` : "") : ""}
+          {currentMinute
+            ? currentMinute < 9
+              ? `0${currentMinute}`
+              : currentMinute
+            : ""}
         </h2>
       )}
 
