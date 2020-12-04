@@ -4,7 +4,8 @@ import Hero from "./components/Hero";
 
 const App = () => {
   const IP_API = "https://freegeoip.app/json/";
-  const WORLDTIME_API = "http://worldtimeapi.org/api/ip/";
+  const WORLDTIME_API =
+    "https://cors-anywhere.herokuapp.com/http://worldtimeapi.org/api/ip/";
 
   // ------ Set states ------ //
   const [greeting, setGreeting] = useState(null);
