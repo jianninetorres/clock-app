@@ -6,6 +6,9 @@ const App = () => {
   const IP_API = "https://freegeoip.app/json/";
   const WORLDTIME_API =
     "https://cors-anywhere.herokuapp.com/http://worldtimeapi.org/api/ip/";
+  let initialTime = new Date();
+  let initialTimeHour = initialTime.getHours();
+  let initialTimeMinutes = initialTime.getMinutes();
 
   // ------ Set states ------ //
   const [greeting, setGreeting] = useState(null);
