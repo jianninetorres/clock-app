@@ -76,33 +76,42 @@ const App = () => {
     },
   };
 
-  // ------ Perform side effects after component has mounted ------ //
-  useEffect(() => {
-    let mounted = true;
-    if (mounted) {
-      getIPAddress();
-      getTimeData();
-
-      // update current time every second
-      setInterval(() => {
-        getCurrentTime();
-      }, 1000);
-    }
-
-    if (0 < currentHour < 4 || 19 < currentHour < 25) {
+  const showGreeting = (hour) => {
+    if (hour < 6) {
       setGreeting(`Good ${greetings.evening.label}, it's currently`);
       setIcon(greetings.evening.icon);
       setBackgroundImage(greetings.evening.bgImage);
-    } else if (5 < currentHour < 12) {
+    } else if (hour < 12) {
       setGreeting(`Good ${greetings.morning.label}, it's currently`);
       setIcon(greetings.morning.icon);
       setBackgroundImage(greetings.morning.bgImage);
-    } else if (12 < currentHour < 18) {
+    } else if (hour < 18) {
       setGreeting(`Good ${greetings.afternoon.label}, it's currently`);
       setIcon(greetings.afternoon.icon);
       setBackgroundImage(greetings.afternoon.bgImage);
+    } else if (hour < 25) {
+      setGreeting(`Good ${greetings.evening.label}, it's currently`);
+      setIcon(greetings.evening.icon);
+      setBackgroundImage(greetings.evening.bgImage);
+    }
+  };
+
+  // ------ Perform side effects after component has mounted ------ //
+  useEffect(() => {
+    let mounted = true;
     getIPAddress(IP_API);
     getTimeData(WORLDTIME_API);
+    // showGreeting(currentHour);
+    if (currentHour) {
+      // showGreeting(1);
+      if (mounted) {
+        showGreeting(currentHour);
+        // update current time every second
+        setInterval(() => {
+          getCurrentTime();
+          // showGreeting(currentHour);
+        }, 1000);
+      }
     }
 
     return () => {
