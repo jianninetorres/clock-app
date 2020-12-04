@@ -26,9 +26,8 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   // ------ Call IP Address API ------ //
-  const getIPAddress = async () => {
-    const URL = IP_API;
-    const response = await fetch(URL);
+  const getIPAddress = async (url) => {
+    const response = await fetch(url);
     const data = await response.json();
 
     if (data.ip !== "") {
@@ -111,6 +110,7 @@ const App = () => {
       setGreeting(`Good ${greetings.afternoon.label}, it's currently`);
       setIcon(greetings.afternoon.icon);
       setBackgroundImage(greetings.afternoon.bgImage);
+    getIPAddress(IP_API);
     }
 
     return () => {
