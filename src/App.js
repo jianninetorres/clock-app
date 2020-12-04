@@ -52,18 +52,10 @@ const App = () => {
     }
   };
 
-  const getCurrentTime = async () => {
-    const URL = WORLDTIME_API;
-    const response = await fetch(URL);
-    const data = await response.json();
-
-    if (data.datetime !== "") {
-      let time = new Date(data.datetime);
-      setCurrentHour(time.getHours());
-      setCurrentMinute(time.getMinutes());
-    } else {
-      setErrorMessage("Uh oh");
-    }
+  const getCurrentTime = () => {
+    const now = new Date();
+    setCurrentHour(now.getHours());
+    setCurrentMinute(now.getMinutes());
   };
 
   const greetings = {
