@@ -37,10 +37,9 @@ const App = () => {
     }
   };
 
-  // get time-related data
-  const getTimeData = async () => {
-    const URL = WORLDTIME_API;
-    const response = await fetch(URL);
+  // ------ Get time-related data ------ //
+  const getTimeData = async (url) => {
+    const response = await fetch(url);
     const data = await response.json();
 
     if (data.client_ip !== "") {
@@ -111,6 +110,7 @@ const App = () => {
       setIcon(greetings.afternoon.icon);
       setBackgroundImage(greetings.afternoon.bgImage);
     getIPAddress(IP_API);
+    getTimeData(WORLDTIME_API);
     }
 
     return () => {
