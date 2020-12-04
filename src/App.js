@@ -11,7 +11,7 @@ const App = () => {
   let initialTimeMinutes = initialTime.getMinutes();
 
   // ------ Set states ------ //
-  const [greeting, setGreeting] = useState(null);
+  const [greeting, setGreeting] = useState("Hello");
   const [ipAddress, setIPAddress] = useState(null);
   const [city, setCity] = useState(null);
   const [regionCode, setRegionCode] = useState(null);
