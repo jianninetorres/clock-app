@@ -15,8 +15,8 @@ const App = () => {
   const [ipAddress, setIPAddress] = useState(null);
   const [city, setCity] = useState(null);
   const [regionCode, setRegionCode] = useState(null);
-  const [currentHour, setCurrentHour] = useState(null);
-  const [currentMinute, setCurrentMinute] = useState(null);
+  const [currentHour, setCurrentHour] = useState(initialTimeHour);
+  const [currentMinute, setCurrentMinute] = useState(initialTimeMinutes);
   const [dayOfWeek, setDayOfWeek] = useState(null);
   const [dayOfYear, setDayOfYear] = useState(null);
   const [weekNumber, setweekNumber] = useState(null);
