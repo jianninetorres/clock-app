@@ -19,19 +19,31 @@ const CurrentTimeStyles = styled.div`
   }
 `;
 
-const CurrentTime = ({ currentHour, currentMinute, timezone }) => {
+const CurrentTime = ({
+  currentHour,
+  currentMinute,
+  timezone,
+  city,
+  regionCode,
+  greeting,
+}) => {
   const hour = currentHour === 0 ? 12 : currentHour;
   const minute = currentMinute < 10 ? `0${currentMinute}` : currentMinute;
 
   return (
     <CurrentTimeStyles>
+      <h3>{greeting}</h3>
       {hour && minute && (
-        <h2>
-          {hour}:{minute}
-        </h2>
+        <div>
+          <h2>
+            {hour}:{minute}
+          </h2>
+          <span>{timezone}</span>
+        </div>
       )}
-
-      <span>{timezone}</span>
+      <p>
+        in {city}, {regionCode}
+      </p>
     </CurrentTimeStyles>
   );
 };

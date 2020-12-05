@@ -47,16 +47,15 @@ const Hero = ({
     backgroundImage === "daylight" ? bgImageDay : bgImageNight;
   return (
     <HeroStyles background={showBgImage}>
-      <h3>{greeting}</h3>
       <Quote quote={quote} quoteAuthor={quoteAuthor} />
       <CurrentTime
         currentHour={currentHour}
         currentMinute={currentMinute}
         timezone={timezone}
+        city={city}
+        regionCode={regionCode}
+        greeting={greeting}
       />
-      <p>
-        in {city}, {regionCode}
-      </p>
     </HeroStyles>
   );
 };
