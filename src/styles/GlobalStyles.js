@@ -35,6 +35,12 @@ const GlobalStyles = createGlobalStyle`
         font-weight: 400;
         font-size: 1.2rem;
     }
+
+    blockquote {
+        font-weight: 300;
+        font-size: 1rem;
+        line-height: 1.2;
+    }
 `;
 
 export default GlobalStyles;
