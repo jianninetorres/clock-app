@@ -3,6 +3,8 @@ import React from "react";
 import styled from "styled-components";
 
 const QuoteStyles = styled.div`
+  z-index: 1;
+
   p {
     color: var(--white);
     margin-top: var(--base-size);

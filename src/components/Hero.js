@@ -9,11 +9,21 @@ const HeroStyles = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
   background: url(${(props) => props.background}) no-repeat center center;
   background-size: cover;
   padding: calc(var(--base-size) * 2) calc(var(--base-size) * 2);
   color: #fff;
   height: 100%;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.35);
+  }
 
   h3 {
     margin-bottom: calc(var(--base-size) * 2);

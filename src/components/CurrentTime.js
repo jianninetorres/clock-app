@@ -7,6 +7,7 @@ const CurrentTimeStyles = styled.div`
   justify-content: center;
   align-items: flex-end;
   margin-bottom: calc(var(--base-size) * 2);
+  z-index: 1;
 
   h2 {
     margin-bottom: 0;
