@@ -9,6 +9,7 @@ import "./styles/typography.css";
 
 const WrapperStyles = styled.div`
   overflow: hidden;
+  height: 100vh;
 `;
 
 const App = () => {

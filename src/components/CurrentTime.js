@@ -3,9 +3,11 @@ import React from "react";
 import styled from "styled-components";
 
 const CurrentTimeStyles = styled.div`
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
+  padding-bottom: calc(var(--base-size) * 2);
   margin-bottom: calc(var(--base-size) * 2);
   z-index: 1;
 
@@ -13,8 +15,12 @@ const CurrentTimeStyles = styled.div`
     margin-bottom: 0;
   }
 
+  div {
+    display: flex;
+    align-items: flex-end;
+  }
+
   span {
-    display: block;
     margin-bottom: calc(var(--base-size) - 4px);
   }
 `;
