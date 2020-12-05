@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "Inter Light", sans-serif;
+  src: url("../fonts/Inter-Light-slnt=0.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter Medium", sans-serif;
+  src: url("../fonts/Inter-Medium-slnt=0.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter Regular", sans-serif;
+  src: url("../fonts/Inter-Regular-slnt=0.ttf");
+  font-display: swap;
+}

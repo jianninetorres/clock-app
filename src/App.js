@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "reset-css";
 import Hero from "./components/Hero";
+import MainSection from "./components/MainSection";
+import GlobalStyles from "./styles/GlobalStyles";
+
+import styled from "styled-components";
+import "./styles/typography.css";
+
+const WrapperStyles = styled.div`
+  overflow: hidden;
+`;
 
 const App = () => {
   const IP_API = "https://freegeoip.app/json/";
@@ -123,14 +132,19 @@ const App = () => {
 
   return (
     <>
-      <Hero
-        greeting={greeting}
-        currentHour={currentHour}
-        currentMinute={currentMinute}
-        city={city}
-        regionCode={regionCode}
-        timezone={timezone}
-      />
+      <GlobalStyles />
+      <WrapperStyles>
+        <Hero
+          greeting={greeting}
+          currentHour={currentHour}
+          currentMinute={currentMinute}
+          city={city}
+          regionCode={regionCode}
+          timezone={timezone}
+          backgroundImage={backgroundImage}
+        />
+        {/* <MainSection /> */}
+      </WrapperStyles>
     </>
   );
 };
