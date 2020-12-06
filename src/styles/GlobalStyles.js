@@ -33,13 +33,14 @@ const GlobalStyles = createGlobalStyle`
     
     p {
         font-weight: 400;
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     blockquote {
         font-weight: 300;
         font-size: 1rem;
         line-height: 1.2;
+        color: rgba(255, 255, 255, 0.8);
     }
 `;
 
