@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "reset-css";
 import Hero from "./components/Hero";
 import MainSection from "./components/MainSection";
@@ -87,42 +87,54 @@ const App = () => {
     },
   };
 
-  const showGreeting = (hour) => {
-    if (hour < 6) {
-      setGreeting(`Good ${greetings.evening.label}, it's currently`);
-      setIcon(greetings.evening.icon);
-      setBackgroundImage(greetings.evening.bgImage);
-    } else if (hour < 12) {
-      setGreeting(`Good ${greetings.morning.label}, it's currently`);
-      setIcon(greetings.morning.icon);
-      setBackgroundImage(greetings.morning.bgImage);
-    } else if (hour < 18) {
-      setGreeting(`Good ${greetings.afternoon.label}, it's currently`);
-      setIcon(greetings.afternoon.icon);
-      setBackgroundImage(greetings.afternoon.bgImage);
-    } else if (hour < 25) {
-      setGreeting(`Good ${greetings.evening.label}, it's currently`);
-      setIcon(greetings.evening.icon);
-      setBackgroundImage(greetings.evening.bgImage);
-    }
-  };
+  const showGreeting = useCallback(
+    (hour) => {
+      if (hour < 6) {
+        setGreeting(`Good ${greetings.evening.label}, it's currently`);
+        setIcon(greetings.evening.icon);
+        setBackgroundImage(greetings.evening.bgImage);
+        console.log(`evening, ${hour}`);
+      } else if (hour < 12) {
+        setGreeting(`Good ${greetings.morning.label}, it's currently`);
+        setIcon(greetings.morning.icon);
+        setBackgroundImage(greetings.morning.bgImage);
+        console.log(`morning, ${hour}`);
+      } else if (hour < 18) {
+        setGreeting(`Good ${greetings.afternoon.label}, it's currently`);
+        setIcon(greetings.afternoon.icon);
+        setBackgroundImage(greetings.afternoon.bgImage);
+        console.log(`afternoon, ${hour}`);
+      } else if (hour < 25) {
+        setGreeting(`Good ${greetings.evening.label}, it's currently`);
+        setIcon(greetings.evening.icon);
+        setBackgroundImage(greetings.evening.bgImage);
+        console.log(`evening, ${hour}`);
+      }
+    },
+    [
+      greetings.evening.label,
+      greetings.evening.icon,
+      greetings.evening.bgImage,
+      greetings.morning.label,
+      greetings.morning.icon,
+      greetings.morning.bgImage,
+      greetings.afternoon.label,
+      greetings.afternoon.icon,
+      greetings.afternoon.bgImage,
+    ]
+  );
 
   // ------ Perform side effects after component has mounted ------ //
   useEffect(() => {
     let mounted = true;
     getIPAddress(IP_API);
     getTimeData(WORLDTIME_API);
-    // showGreeting(currentHour);
-    if (currentHour) {
-      // showGreeting(1);
-      if (mounted) {
-        showGreeting(currentHour);
-        // update current time every second
-        setInterval(() => {
-          getCurrentTime();
-          // showGreeting(currentHour);
-        }, 1000);
-      }
+    if (mounted && currentHour) {
+      showGreeting(currentHour);
+      // update current time every second
+      setInterval(() => {
+        getCurrentTime();
+      }, 1000);
     }
 
     return () => {
@@ -130,7 +142,9 @@ const App = () => {
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentHour, currentMinute]);
+    // useEffect is dependent on currentHour and currentMinute
+    // because the greeting depends on them
+  }, [currentHour, showGreeting]);
 
   return (
     <>
