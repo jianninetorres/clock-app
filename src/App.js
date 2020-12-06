@@ -23,7 +23,6 @@ const App = () => {
 
   // ------ Set states ------ //
   const [greeting, setGreeting] = useState("Hello");
-  const [ipAddress, setIPAddress] = useState(null);
   const [city, setCity] = useState(null);
   const [regionCode, setRegionCode] = useState(null);
   const [currentHour, setCurrentHour] = useState(initialTimeHour);
@@ -44,7 +43,6 @@ const App = () => {
     const data = await response.json();
 
     if (data.ip !== "") {
-      setIPAddress(data.ip);
       setCity(data.city);
       setRegionCode(data.region_code);
     }
