@@ -16,7 +16,6 @@ const App = () => {
   const IP_API = "https://freegeoip.app/json/";
   const WORLDTIME_API =
     "https://cors-anywhere.herokuapp.com/http://worldtimeapi.org/api/ip/";
-  const QUOTE_API = "https://api.quotable.io/random";
 
   let initialTime = new Date();
   let initialTimeHour = initialTime.getHours();
@@ -35,8 +34,6 @@ const App = () => {
   const [timezone, setTimezone] = useState(null);
   const [icon, setIcon] = useState(null);
   const [backgroundImage, setBackgroundImage] = useState(null);
-  const [quote, setQuote] = useState(null);
-  const [quoteAuthor, setQuoteAuthor] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
   // ------ Call IP Address API ------ //
@@ -64,15 +61,6 @@ const App = () => {
     } else {
       setErrorMessage("Uh oh");
     }
-  };
-
-  // ------ Get quote ------ //
-  const getQuote = async (url) => {
-    const response = await fetch(url);
-    const data = await response.json();
-
-    setQuote(data.content);
-    setQuoteAuthor(data.author);
   };
 
   const getCurrentTime = () => {
@@ -124,7 +112,6 @@ const App = () => {
     let mounted = true;
     getIPAddress(IP_API);
     getTimeData(WORLDTIME_API);
-    getQuote(QUOTE_API);
     // showGreeting(currentHour);
     if (currentHour) {
       // showGreeting(1);
@@ -157,8 +144,6 @@ const App = () => {
           regionCode={regionCode}
           timezone={timezone}
           backgroundImage={backgroundImage}
-          quote={quote}
-          quoteAuthor={quoteAuthor}
         />
         {/* <MainSection /> */}
       </WrapperStyles>

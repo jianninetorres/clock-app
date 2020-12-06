@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import refresh from "../images/icon-refresh.svg";
 
 import styled from "styled-components";
@@ -7,7 +7,12 @@ const QuoteStyles = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  justify-content: space-between;
   z-index: 1;
+
+  blockquote {
+    padding-right: var(--base-size);
+  }
 
   p {
     color: var(--white);
@@ -15,13 +20,41 @@ const QuoteStyles = styled.div`
   }
 `;
 
-const Quote = ({ quote, quoteAuthor }) => {
+const Quote = () => {
+  const QUOTE_API = "https://api.quotable.io/random";
+  const [quote, setQuote] = useState(null);
+  const [quoteAuthor, setQuoteAuthor] = useState(null);
   const [refreshRotate, setRefreshRotate] = useState(360);
-  const imgRef = useRef();
+  const imgRef = useRef(); // referring to a dom element
+
+  // ------ Get quote ------ //
+  const getQuote = async (url) => {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    setQuote(data.content);
+    setQuoteAuthor(data.author);
+  };
+
   const onClickRefresh = () => {
     setRefreshRotate((prevState) => (prevState += 360));
-    imgRef.current.style = `transform: rotate(${refreshRotate}deg); transition: transform 0.2s linear`;
+    imgRef.current.style = `transform: rotate(${refreshRotate}deg); transition: transform 0.5s ease-in-out`;
+    getQuote(QUOTE_API);
   };
+
+  useEffect(() => {
+    let mounted = true;
+
+    if (mounted) {
+      getQuote(QUOTE_API);
+    }
+
+    return () => {
+      mounted = false;
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <QuoteStyles>
