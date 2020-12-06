@@ -27,6 +27,13 @@ const CurrentTimeStyles = styled.div`
     }
   }
 
+  .time-container {
+    display: flex;
+    align-items: baseline;
+
+    span {
+      margin-left: calc(var(--base-size) / 2);
+    }
   }
 
   span {
@@ -59,7 +66,7 @@ const CurrentTime = ({
         </h3>
       </div>
       {hour && minute && (
-        <div>
+        <div class="time-container">
           <h2>
             {hour}:{minute}
           </h2>
