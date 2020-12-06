@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import "reset-css";
 import Hero from "./components/Hero";
 import MainSection from "./components/MainSection";
@@ -34,7 +34,9 @@ const App = () => {
   const [timezone, setTimezone] = useState(null);
   const [icon, setIcon] = useState(null);
   const [backgroundImage, setBackgroundImage] = useState(null);
+  const [greetingVisibility, setGreetingVisibility] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const wrapperRef = useRef();
 
   // ------ Call IP Address API ------ //
   const getIPAddress = async (url) => {
@@ -90,22 +92,22 @@ const App = () => {
   const showGreeting = useCallback(
     (hour) => {
       if (hour < 6) {
-        setGreeting(`Good ${greetings.evening.label}, it's currently`);
+        setGreeting(`Good ${greetings.evening.label}`);
         setIcon(greetings.evening.icon);
         setBackgroundImage(greetings.evening.bgImage);
         console.log(`evening, ${hour}`);
       } else if (hour < 12) {
-        setGreeting(`Good ${greetings.morning.label}, it's currently`);
+        setGreeting(`Good ${greetings.morning.label}`);
         setIcon(greetings.morning.icon);
         setBackgroundImage(greetings.morning.bgImage);
         console.log(`morning, ${hour}`);
       } else if (hour < 18) {
-        setGreeting(`Good ${greetings.afternoon.label}, it's currently`);
+        setGreeting(`Good ${greetings.afternoon.label}`);
         setIcon(greetings.afternoon.icon);
         setBackgroundImage(greetings.afternoon.bgImage);
         console.log(`afternoon, ${hour}`);
       } else if (hour < 25) {
-        setGreeting(`Good ${greetings.evening.label}, it's currently`);
+        setGreeting(`Good ${greetings.evening.label}`);
         setIcon(greetings.evening.icon);
         setBackgroundImage(greetings.evening.bgImage);
         console.log(`evening, ${hour}`);
@@ -135,6 +137,11 @@ const App = () => {
       setInterval(() => {
         getCurrentTime();
       }, 1000);
+
+      let viewport = wrapperRef.current.scrollWidth;
+      if (viewport > 500) {
+        setGreetingVisibility(true);
+      }
     }
 
     return () => {
@@ -149,9 +156,10 @@ const App = () => {
   return (
     <>
       <GlobalStyles />
-      <WrapperStyles>
+      <WrapperStyles ref={wrapperRef}>
         <Hero
           greeting={greeting}
+          greetingVisibility={greetingVisibility}
           currentHour={currentHour}
           currentMinute={currentMinute}
           city={city}

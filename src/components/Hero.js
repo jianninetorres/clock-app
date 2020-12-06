@@ -24,15 +24,11 @@ const HeroStyles = styled.div`
     left: 0px;
     background-color: rgba(0, 0, 0, 0.35);
   }
-
-  h3 {
-    margin-bottom: calc(var(--base-size) * 2);
-    // padding-top: calc(var(--base-size) * 8);
-  }
 `;
 
 const Hero = ({
   greeting,
+  greetingVisibility,
   currentHour,
   currentMinute,
   city,
@@ -55,6 +51,7 @@ const Hero = ({
         city={city}
         regionCode={regionCode}
         greeting={greeting}
+        greetingVisibility={greetingVisibility}
       />
     </HeroStyles>
   );

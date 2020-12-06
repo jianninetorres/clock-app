@@ -11,10 +11,6 @@ const CurrentTimeStyles = styled.div`
   margin-bottom: calc(var(--base-size) * 2);
   z-index: 1;
 
-  h2 {
-    margin-bottom: 0;
-  }
-
   div {
     display: flex;
     align-items: flex-end;
@@ -32,13 +28,18 @@ const CurrentTime = ({
   city,
   regionCode,
   greeting,
+  greetingVisibility,
 }) => {
   const hour = currentHour === 0 ? 12 : currentHour;
   const minute = currentMinute < 10 ? `0${currentMinute}` : currentMinute;
 
   return (
     <CurrentTimeStyles>
-      <h3>{greeting}</h3>
+      <h3>
+        {greeting}
+        {greetingVisibility && `,`}
+        {greetingVisibility && <span> it's currently</span>}
+      </h3>
       {hour && minute && (
         <div>
           <h2>
