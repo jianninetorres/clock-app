@@ -52,6 +52,7 @@ const Hero = ({
         regionCode={regionCode}
         greeting={greeting}
         greetingVisibility={greetingVisibility}
+        icon={icon}
       />
     </HeroStyles>
   );

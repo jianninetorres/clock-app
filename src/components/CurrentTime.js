@@ -1,4 +1,6 @@
 import React from "react";
+import sun from "../images/icon-sun.svg";
+import moon from "../images/icon-moon.svg";
 
 import styled from "styled-components";
 
@@ -11,9 +13,20 @@ const CurrentTimeStyles = styled.div`
   margin-bottom: calc(var(--base-size) * 2);
   z-index: 1;
 
-  div {
+  .greeting-container {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    margin-bottom: var(--base-size);
+
+    img {
+      margin-right: var(--base-size);
+    }
+
+    h3 {
+      margin-bottom: 0;
+    }
+  }
+
   }
 
   span {
@@ -29,17 +42,22 @@ const CurrentTime = ({
   regionCode,
   greeting,
   greetingVisibility,
+  icon,
 }) => {
   const hour = currentHour === 0 ? 12 : currentHour;
   const minute = currentMinute < 10 ? `0${currentMinute}` : currentMinute;
+  const iconDisplay = icon === "sun" ? sun : moon;
 
   return (
     <CurrentTimeStyles>
-      <h3>
-        {greeting}
-        {greetingVisibility && `,`}
-        {greetingVisibility && <span> it's currently</span>}
-      </h3>
+      <div class="greeting-container">
+        {greeting && <img src={iconDisplay} alt="" />}
+        <h3>
+          {greeting}
+          {greetingVisibility && `,`}
+          {greetingVisibility && <span> it's currently</span>}
+        </h3>
+      </div>
       {hour && minute && (
         <div>
           <h2>

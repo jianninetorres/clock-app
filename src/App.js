@@ -166,6 +166,7 @@ const App = () => {
           regionCode={regionCode}
           timezone={timezone}
           backgroundImage={backgroundImage}
+          icon={icon}
         />
         {/* <MainSection /> */}
       </WrapperStyles>
