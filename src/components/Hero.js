@@ -7,15 +7,9 @@ import Quote from "./Quote";
 import Button from "./Button";
 
 const HeroStyles = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
   background: url(${(props) => props.background}) no-repeat center center;
   background-size: cover;
   padding: calc(var(--base-size) * 2) calc(var(--base-size) * 2);
-  color: #fff;
-  height: 100%;
   &::before {
     content: "";
     position: absolute;
@@ -24,6 +18,23 @@ const HeroStyles = styled.div`
     bottom: 0px;
     left: 0px;
     background-color: rgba(0, 0, 0, 0.35);
+  }
+
+  div.hero-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    color: #fff;
+    height: 100vh;
+    // transform: translateY(-25%);
+  }
+
+  div.time-button-container {
+    z-index: 1;
+    color: inherit;
+    padding-bottom: calc(var(--base-size) * 2);
+    margin-bottom: calc(var(--base-size) * 2);
   }
 `;
 

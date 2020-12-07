@@ -9,9 +9,7 @@ const CurrentTimeStyles = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding-bottom: calc(var(--base-size) * 2);
-  margin-bottom: calc(var(--base-size) * 2);
-  z-index: 1;
+  margin-bottom: calc(var(--base-size) * 4);
 
   .greeting-container {
     display: flex;
@@ -39,6 +37,10 @@ const CurrentTimeStyles = styled.div`
   span {
     margin-bottom: calc(var(--base-size) - 4px);
   }
+
+  p {
+    margin-bottom: 0;
+  }
 `;
 
 const CurrentTime = ({
@@ -57,7 +59,7 @@ const CurrentTime = ({
 
   return (
     <CurrentTimeStyles>
-      <div class="greeting-container">
+      <div className="greeting-container">
         {greeting && <img src={iconDisplay} alt="" />}
         <h3>
           {greeting}
@@ -66,16 +68,16 @@ const CurrentTime = ({
         </h3>
       </div>
       {hour && minute && (
-        <div class="time-container">
+        <div className="time-container">
           <h2>
             {hour}:{minute}
           </h2>
           <span>{timezone}</span>
         </div>
       )}
-      <p>
+      <h3>
         in {city}, {regionCode}
-      </p>
+      </h3>
     </CurrentTimeStyles>
   );
 };
