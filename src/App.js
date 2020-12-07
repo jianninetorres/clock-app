@@ -166,8 +166,9 @@ const App = () => {
           backgroundImage={backgroundImage}
           icon={icon}
           error={errorMessage}
-        />
-        {/* <MainSection /> */}
+        >
+          <MainSection />
+        </Hero>
       </WrapperStyles>
     </>
   );

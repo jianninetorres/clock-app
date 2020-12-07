@@ -28,6 +28,7 @@ const HeroStyles = styled.div`
 `;
 
 const Hero = ({
+  children,
   greeting,
   greetingVisibility,
   currentHour,
@@ -59,6 +60,7 @@ const Hero = ({
           />
           <Button background={showBgImage} />
         </div>
+        {children}
       </div>
     </HeroStyles>
   );
