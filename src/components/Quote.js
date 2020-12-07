@@ -39,7 +39,9 @@ const Quote = () => {
   const onClickRefresh = () => {
     setRefreshRotate((prevState) => (prevState += 360));
     imgRef.current.style = `transform: rotate(${refreshRotate}deg); transition: transform 0.5s ease-in-out`;
-    getQuote(QUOTE_API);
+    setTimeout(() => {
+      getQuote(QUOTE_API);
+    }, 200);
   };
 
   useEffect(() => {
@@ -62,7 +64,9 @@ const Quote = () => {
         {quote && <blockquote>“{quote}”</blockquote>}
         {quoteAuthor && <p>{quoteAuthor}</p>}
       </div>
-      <img src={refresh} alt="" ref={imgRef} onClick={onClickRefresh} />
+      {quote && quoteAuthor && (
+        <img src={refresh} alt="" ref={imgRef} onClick={onClickRefresh} />
+      )}
     </QuoteStyles>
   );
 };
