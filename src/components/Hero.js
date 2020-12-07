@@ -4,6 +4,7 @@ import bgImageDay from "../images/bg-image-daytime.jpg";
 import bgImageNight from "../images/bg-image-nighttime.jpg";
 import CurrentTime from "./CurrentTime";
 import Quote from "./Quote";
+import Button from "./Button";
 
 const HeroStyles = styled.div`
   display: flex;
@@ -43,17 +44,22 @@ const Hero = ({
     backgroundImage === "daylight" ? bgImageDay : bgImageNight;
   return (
     <HeroStyles background={showBgImage}>
-      <Quote quote={quote} quoteAuthor={quoteAuthor} />
-      <CurrentTime
-        currentHour={currentHour}
-        currentMinute={currentMinute}
-        timezone={timezone}
-        city={city}
-        regionCode={regionCode}
-        greeting={greeting}
-        greetingVisibility={greetingVisibility}
-        icon={icon}
-      />
+      <div className="hero-content-wrapper">
+        <Quote quote={quote} quoteAuthor={quoteAuthor} />
+        <div className="time-button-container">
+          <CurrentTime
+            currentHour={currentHour}
+            currentMinute={currentMinute}
+            timezone={timezone}
+            city={city}
+            regionCode={regionCode}
+            greeting={greeting}
+            greetingVisibility={greetingVisibility}
+            icon={icon}
+          />
+          <Button background={showBgImage} />
+        </div>
+      </div>
     </HeroStyles>
   );
 };
