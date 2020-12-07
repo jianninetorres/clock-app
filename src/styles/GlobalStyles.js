@@ -26,19 +26,19 @@ const GlobalStyles = createGlobalStyle`
     
     h3 {
         font-family: "Inter Medium", sans-serif;
-        font-size: 1rem;
+        font-size: 1.5rem;
         text-transform: uppercase;
-        letter-spacing: calc(var(--base-size) / 4);
+        letter-spacing: calc(var(--base-size) / 8);
     }
     
     p {
         font-weight: 400;
-        font-size: 1rem;
+        font-size: 1.15rem;
     }
 
     blockquote {
         font-weight: 300;
-        font-size: 1rem;
+        font-size: 1.2rem;
         line-height: 1.2;
         color: rgba(255, 255, 255, 0.8);
     }
