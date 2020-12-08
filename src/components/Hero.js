@@ -5,12 +5,11 @@ import bgImageNight from "../images/bg-image-nighttime.jpg";
 import CurrentTime from "./CurrentTime";
 import Quote from "./Quote";
 import Button from "./Button";
-import MainSection from "./MainSection";
 
 const HeroStyles = styled.div`
   background: url(${(props) => props.background}) no-repeat center center;
   background-size: cover;
-  padding: calc(var(--base-size) * 2) calc(var(--base-size) * 2);
+  padding: calc(var(--base-size) * 2) 0;
   position: relative;
   &::before {
     content: "";
@@ -25,7 +24,7 @@ const HeroStyles = styled.div`
   div.hero-content-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     position: relative;
     color: #fff;
     height: 100vh;

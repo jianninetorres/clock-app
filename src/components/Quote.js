@@ -9,6 +9,8 @@ const QuoteStyles = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   z-index: 1;
+  flex: 1 1 auto;
+  padding: 0 calc(var(--base-size) * 2);
 
   blockquote {
     padding-right: var(--base-size);

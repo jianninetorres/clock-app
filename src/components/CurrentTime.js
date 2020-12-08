@@ -10,6 +10,7 @@ const CurrentTimeStyles = styled.div`
   justify-content: center;
   align-items: flex-start;
   margin-bottom: calc(var(--base-size) * 4);
+  padding: 0 calc(var(--base-size) * 2);
 
   .greeting-container {
     display: flex;
