@@ -10,6 +10,7 @@ import "./styles/typography.css";
 const WrapperStyles = styled.div`
   overflow: hidden;
   height: 100vh;
+  position: relative;
 `;
 
 const App = () => {
@@ -159,27 +160,24 @@ const App = () => {
   }, [currentHour, showGreeting]);
 
   return (
-    <>
+    <WrapperStyles ref={wrapperRef}>
       <GlobalStyles />
-      <WrapperStyles ref={wrapperRef}>
-        <Hero
-          greeting={greeting}
-          greetingVisibility={greetingVisibility}
-          currentHour={currentHour}
-          currentMinute={currentMinute}
-          city={city}
-          regionCode={regionCode}
-          timezone={timezone}
-          backgroundImage={backgroundImage}
-          icon={icon}
-          error={errorMessage}
-          onClickButton={onClickButton}
-          transformY={buttonIsClicked}
-        >
-          {buttonIsClicked && <MainSection transformY={buttonIsClicked} />}
-        </Hero>
-      </WrapperStyles>
-    </>
+      <Hero
+        greeting={greeting}
+        greetingVisibility={greetingVisibility}
+        currentHour={currentHour}
+        currentMinute={currentMinute}
+        city={city}
+        regionCode={regionCode}
+        timezone={timezone}
+        backgroundImage={backgroundImage}
+        icon={icon}
+        error={errorMessage}
+        onClickButton={onClickButton}
+        transformY={buttonIsClicked}
+      />
+      <MainSection transformY={buttonIsClicked} />
+    </WrapperStyles>
   );
 };
 

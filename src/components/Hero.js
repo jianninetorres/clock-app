@@ -5,6 +5,7 @@ import bgImageNight from "../images/bg-image-nighttime.jpg";
 import CurrentTime from "./CurrentTime";
 import Quote from "./Quote";
 import Button from "./Button";
+import MainSection from "./MainSection";
 
 const HeroStyles = styled.div`
   background: url(${(props) => props.background}) no-repeat center center;
@@ -41,7 +42,6 @@ const HeroStyles = styled.div`
 `;
 
 const Hero = ({
-  children,
   greeting,
   greetingVisibility,
   currentHour,
@@ -76,7 +76,6 @@ const Hero = ({
           />
           <Button background={showBgImage} onClickButton={onClickButton} />
         </div>
-        {children}
       </div>
     </HeroStyles>
   );
