@@ -7,19 +7,19 @@ import Quote from "./Quote";
 import Button from "./Button";
 
 const HeroStyles = styled.div`
-  // background: url(${(props) => props.background}) no-repeat center center;
-  // background-size: cover;
-  // padding: calc(var(--base-size) * 2) calc(var(--base-size) * 2);
-  // position: relative;
-  // &::before {
-  //   content: "";
-  //   position: absolute;
-  //   top: 0px;
-  //   right: 0px;
-  //   bottom: 0px;
-  //   left: 0px;
-  //   background-color: rgba(0, 0, 0, 0.35);
-  // }
+  background: url(${(props) => props.background}) no-repeat center center;
+  background-size: cover;
+  padding: calc(var(--base-size) * 2) calc(var(--base-size) * 2);
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.35);
+  }
 
   div.hero-content-wrapper {
     display: flex;
@@ -28,7 +28,8 @@ const HeroStyles = styled.div`
     position: relative;
     color: #fff;
     height: 100vh;
-    // transform: translateY(-25%);
+    transform: translateY(${(props) => props.transform});
+    transition: transform 0.5s ease-out;
   }
 
   div.time-button-container {
@@ -38,6 +39,7 @@ const HeroStyles = styled.div`
     margin-bottom: calc(var(--base-size) * 2);
   }
 `;
+
 const Hero = ({
   children,
   greeting,
@@ -56,8 +58,9 @@ const Hero = ({
 }) => {
   const showBgImage =
     backgroundImage === "daylight" ? bgImageDay : bgImageNight;
+  const wasButtonClicked = transformY === true ? "-25%" : 0;
   return (
-    <HeroStyles background={showBgImage}>
+    <HeroStyles background={showBgImage} transform={wasButtonClicked}>
       <div className="hero-content-wrapper">
         <Quote quote={quote} quoteAuthor={quoteAuthor} />
         <div className="time-button-container">
@@ -71,10 +74,10 @@ const Hero = ({
             greetingVisibility={greetingVisibility}
             icon={icon}
           />
-          <Button background={showBgImage} />
+          <Button background={showBgImage} onClickButton={onClickButton} />
         </div>
         {children}
-      </section>
+      </div>
     </HeroStyles>
   );
 };
