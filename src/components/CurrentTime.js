@@ -9,9 +9,9 @@ const CurrentTimeStyles = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 0 var(--base-size);
+  padding: calc(var(--base-size) * 2) var(--base-size);
   @media screen and (min-width: 568px) {
-    padding: 0 calc(var(--base-size) * 2);
+    padding: calc(var(--base-size) * 4) calc(var(--base-size) * 2);
   }
 
   .greeting-container {

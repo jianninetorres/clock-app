@@ -21,6 +21,9 @@ const HeroStyles = styled.div`
     left: 0px;
     background-color: rgba(0, 0, 0, 0.35);
   }
+  @media screen and (min-width: 1200px) {
+    padding-top: calc(var(--base-size) * 2) 0;
+  }
 
   div.hero-content-wrapper {
     display: flex;
@@ -31,6 +34,11 @@ const HeroStyles = styled.div`
     height: 100vh;
     transform: translateY(${(props) => props.transform});
     transition: transform 0.5s ease-out;
+    @media screen and (min-width: 1200px) {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
   }
 
   div.time-button-container {
