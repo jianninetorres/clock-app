@@ -10,7 +10,10 @@ const QuoteStyles = styled.div`
   justify-content: space-between;
   z-index: 1;
   flex: 1 1 auto;
-  padding: 0 calc(var(--base-size) * 2);
+  padding: var(--base-size);
+  @media screen and (min-width: 568px) {
+    padding: 0 calc(var(--base-size) * 2);
+  }
 
   blockquote {
     padding-right: var(--base-size);

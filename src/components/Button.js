@@ -12,7 +12,10 @@ const ButtonStyles = styled.button`
   min-width: 150px;
   background-color: white;
   padding: calc(var(--base-size) / 2);
-  margin: 0 calc(var(--base-size) * 2);
+  margin: 0 var(--base-size);
+  @media screen and (min-width: 568px) {
+    margin: 0 calc(var(--base-size) * 2);
+  }
 
   h3 {
     background: url(${(props) => props.background}) no-repeat center bottom;

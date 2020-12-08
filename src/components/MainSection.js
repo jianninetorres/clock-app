@@ -24,11 +24,24 @@ const MainSectionStyles = styled.section`
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: calc(var(--base-size) * 2);
+    padding: calc(var(--base-size) * 2) var(--base-size);
     @media screen and (min-width: 568px) {
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
+    }
+
+    h3 {
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 0;
+      text-transform: capitalize;
+      color: ${(props) => props.h3FontColour};
+    }
+
+    h4 {
+      text-transform: uppercase;
+      color: ${(props) => props.h4FontColour};
     }
   }
 `;
@@ -42,31 +55,35 @@ const MainSection = ({
   icon,
 }) => {
   const isVisible = transformY === true ? "32px 0" : "0";
-  const maxHeight = transformY === true ? "calc(50% - 100px)" : 0;
+  const maxHeight = transformY === true ? "calc(50% - 80px)" : 0;
   const bgColour =
-    icon === "sun" ? "rgba(255, 255, 255, 0.7)" : "rgba(0, 0, 0, 0.7)";
+    icon === "sun" ? "rgba(255, 255, 255, 0.8)" : "rgba(0, 0, 0, 0.8)";
+  const h3FontColour = icon === "sun" ? "var(--black)" : "var(--white)";
+  const h4FontColour = icon === "sun" ? "var(--grey1)" : "var(--grey2)";
 
   return (
     <MainSectionStyles
       buttonState={isVisible}
       maxHeight={maxHeight}
       bgColour={bgColour}
+      h3FontColour={h3FontColour}
+      h4FontColour={h4FontColour}
     >
       <div>
-        <h3>Current timezone</h3>
-        <h4>{timezone}</h4>
+        <h4>Current timezone</h4>
+        <h3>{timezone}</h3>
       </div>
       <div>
-        <h3>Day of the year</h3>
-        <h4>{dayOfYear}</h4>
+        <h4>Day of the year</h4>
+        <h3>{dayOfYear}</h3>
       </div>
       <div>
-        <h3>Day of the week</h3>
-        <h4>{dayOfWeek}</h4>
+        <h4>Day of the week</h4>
+        <h3>{dayOfWeek}</h3>
       </div>
       <div>
-        <h3>Week number</h3>
-        <h4>{weekNumber}</h4>
+        <h4>Week number</h4>
+        <h3>{weekNumber}</h3>
       </div>
     </MainSectionStyles>
   );

@@ -5,7 +5,9 @@ const GlobalStyles = createGlobalStyle`
         --base-size: 16px;
         --background-color-grey: #f0f0f0;
         --white: #ffffff;
-        --black: #000000;
+        --black: #333333;
+        --grey1: #808080;
+        --grey2: #c3c3c3;
     }
 
     body {

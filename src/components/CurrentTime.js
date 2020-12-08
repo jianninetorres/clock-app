@@ -10,7 +10,10 @@ const CurrentTimeStyles = styled.div`
   justify-content: center;
   align-items: flex-start;
   margin-bottom: calc(var(--base-size) * 4);
-  padding: 0 calc(var(--base-size) * 2);
+  padding: 0 var(--base-size);
+  @media screen and (min-width: 568px) {
+    padding: 0 calc(var(--base-size) * 2);
+  }
 
   .greeting-container {
     display: flex;
@@ -31,7 +34,9 @@ const CurrentTimeStyles = styled.div`
     align-items: baseline;
 
     span {
-      margin-left: calc(var(--base-size) / 2);
+      @media screen and (min-width: 568px) {
+        margin-left: calc(var(--base-size) / 2);
+      }
     }
   }
 
