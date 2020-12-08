@@ -57,7 +57,7 @@ const Hero = ({
 }) => {
   const showBgImage =
     backgroundImage === "daylight" ? bgImageDay : bgImageNight;
-  const wasButtonClicked = transformY === true ? "-40%" : 0;
+  const wasButtonClicked = transformY === true ? "-50%" : 0;
   return (
     <HeroStyles background={showBgImage} transform={wasButtonClicked}>
       <div className="hero-content-wrapper">

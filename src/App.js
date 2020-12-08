@@ -32,6 +32,7 @@ const App = () => {
   const [dayOfYear, setDayOfYear] = useState(null);
   const [weekNumber, setweekNumber] = useState(null);
   const [timezoneAbbr, setTimezoneAbbr] = useState(null);
+  const [timezone, setTimezone] = useState(null);
   const [icon, setIcon] = useState(null);
   const [backgroundImage, setBackgroundImage] = useState(null);
   const [greetingVisibility, setGreetingVisibility] = useState(false);
@@ -47,6 +48,7 @@ const App = () => {
     if (data.ip !== "") {
       setCity(data.city);
       setRegionCode(data.region_code);
+      setTimezone(data.time_zone);
     }
   };
 
@@ -176,7 +178,14 @@ const App = () => {
         onClickButton={onClickButton}
         transformY={buttonIsClicked}
       />
-      <MainSection transformY={buttonIsClicked} />
+      <MainSection
+        transformY={buttonIsClicked}
+        dayOfWeek={dayOfWeek}
+        dayOfYear={dayOfYear}
+        weekNumber={weekNumber}
+        timezone={timezone}
+        icon={icon}
+      />
     </WrapperStyles>
   );
 };
