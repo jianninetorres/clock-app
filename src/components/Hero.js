@@ -5,6 +5,7 @@ import bgImageNight from "../images/bg-image-nighttime.jpg";
 import CurrentTime from "./CurrentTime";
 import Quote from "./Quote";
 import Button from "./Button";
+import LoadingDots from "./LoadingDots";
 
 const HeroStyles = styled.div`
   background: url(${(props) => props.background}) no-repeat center center;
@@ -54,10 +55,14 @@ const Hero = ({
   quoteAuthor,
   onClickButton,
   transformY,
+  dayOfWeek,
+  dayOfYear,
+  weekNumber,
+  timezone,
 }) => {
   const showBgImage =
     backgroundImage === "daylight" ? bgImageDay : bgImageNight;
-  const wasButtonClicked = transformY === true ? "-50%" : 0;
+  const wasButtonClicked = transformY === true ? "-60%" : 0;
   return (
     <HeroStyles background={showBgImage} transform={wasButtonClicked}>
       <div className="hero-content-wrapper">
@@ -73,7 +78,11 @@ const Hero = ({
             greetingVisibility={greetingVisibility}
             icon={icon}
           />
-          <Button background={showBgImage} onClickButton={onClickButton} />
+          {timezone ? (
+            <Button background={showBgImage} onClickButton={onClickButton} />
+          ) : (
+            <LoadingDots />
+          )}
         </div>
       </div>
     </HeroStyles>

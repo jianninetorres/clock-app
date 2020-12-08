@@ -55,7 +55,7 @@ const MainSection = ({
   icon,
 }) => {
   const isVisible = transformY === true ? "32px 0" : "0";
-  const maxHeight = transformY === true ? "calc(50% - 80px)" : 0;
+  const maxHeight = transformY === true ? "50%" : 0;
   const bgColour =
     icon === "sun" ? "rgba(255, 255, 255, 0.8)" : "rgba(0, 0, 0, 0.8)";
   const h3FontColour = icon === "sun" ? "var(--black)" : "var(--white)";
@@ -69,22 +69,30 @@ const MainSection = ({
       h3FontColour={h3FontColour}
       h4FontColour={h4FontColour}
     >
-      <div>
-        <h4>Current timezone</h4>
-        <h3>{timezone}</h3>
-      </div>
-      <div>
-        <h4>Day of the year</h4>
-        <h3>{dayOfYear}</h3>
-      </div>
-      <div>
-        <h4>Day of the week</h4>
-        <h3>{dayOfWeek}</h3>
-      </div>
-      <div>
-        <h4>Week number</h4>
-        <h3>{weekNumber}</h3>
-      </div>
+      {timezone ? (
+        <div>
+          <h4>Current timezone</h4>
+          <h3>{timezone}</h3>
+        </div>
+      ) : null}
+      {dayOfYear ? (
+        <div>
+          <h4>Day of the year</h4>
+          <h3>{dayOfYear}</h3>
+        </div>
+      ) : null}
+      {dayOfWeek ? (
+        <div>
+          <h4>Day of the week</h4>
+          <h3>{dayOfWeek}</h3>
+        </div>
+      ) : null}
+      {weekNumber ? (
+        <div>
+          <h4>Week number</h4>
+          <h3>{weekNumber}</h3>
+        </div>
+      ) : null}
     </MainSectionStyles>
   );
 };

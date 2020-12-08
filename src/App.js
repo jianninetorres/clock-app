@@ -177,6 +177,10 @@ const App = () => {
         error={errorMessage}
         onClickButton={onClickButton}
         transformY={buttonIsClicked}
+        dayOfWeek={dayOfWeek}
+        dayOfYear={dayOfYear}
+        weekNumber={weekNumber}
+        timezone={timezone}
       />
       <MainSection
         transformY={buttonIsClicked}
