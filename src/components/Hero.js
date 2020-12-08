@@ -7,18 +7,19 @@ import Quote from "./Quote";
 import Button from "./Button";
 
 const HeroStyles = styled.div`
-  background: url(${(props) => props.background}) no-repeat center center;
-  background-size: cover;
-  padding: calc(var(--base-size) * 2) calc(var(--base-size) * 2);
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    background-color: rgba(0, 0, 0, 0.35);
-  }
+  // background: url(${(props) => props.background}) no-repeat center center;
+  // background-size: cover;
+  // padding: calc(var(--base-size) * 2) calc(var(--base-size) * 2);
+  // position: relative;
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0px;
+  //   right: 0px;
+  //   bottom: 0px;
+  //   left: 0px;
+  //   background-color: rgba(0, 0, 0, 0.35);
+  // }
 
   div.hero-content-wrapper {
     display: flex;
@@ -37,7 +38,6 @@ const HeroStyles = styled.div`
     margin-bottom: calc(var(--base-size) * 2);
   }
 `;
-
 const Hero = ({
   children,
   greeting,
@@ -51,6 +51,8 @@ const Hero = ({
   icon,
   quote,
   quoteAuthor,
+  onClickButton,
+  transformY,
 }) => {
   const showBgImage =
     backgroundImage === "daylight" ? bgImageDay : bgImageNight;
@@ -72,7 +74,7 @@ const Hero = ({
           <Button background={showBgImage} />
         </div>
         {children}
-      </div>
+      </section>
     </HeroStyles>
   );
 };

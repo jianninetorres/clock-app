@@ -34,6 +34,7 @@ const App = () => {
   const [icon, setIcon] = useState(null);
   const [backgroundImage, setBackgroundImage] = useState(null);
   const [greetingVisibility, setGreetingVisibility] = useState(false);
+  const [buttonIsClicked, setButtonIsClicked] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const wrapperRef = useRef();
 
@@ -124,6 +125,12 @@ const App = () => {
     ]
   );
 
+  const onClickButton = () => {
+    return buttonIsClicked === true
+      ? setButtonIsClicked(false)
+      : setButtonIsClicked(true);
+  };
+
   // ------ Perform side effects after component has mounted ------ //
   useEffect(() => {
     let mounted = true;
@@ -166,8 +173,10 @@ const App = () => {
           backgroundImage={backgroundImage}
           icon={icon}
           error={errorMessage}
+          onClickButton={onClickButton}
+          transformY={buttonIsClicked}
         >
-          <MainSection />
+          {buttonIsClicked && <MainSection transformY={buttonIsClicked} />}
         </Hero>
       </WrapperStyles>
     </>

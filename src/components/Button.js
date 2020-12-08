@@ -23,9 +23,9 @@ const ButtonStyles = styled.button`
   }
 `;
 
-const Button = ({ background }) => {
+const Button = ({ background, onClickButton }) => {
   return (
-    <ButtonStyles type="button" background={background}>
+    <ButtonStyles type="button" background={background} onClick={onClickButton}>
       <h3>More</h3>
       <img src={arrow} alt="" />
     </ButtonStyles>

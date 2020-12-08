@@ -3,12 +3,18 @@ import React from "react";
 import styled from "styled-components";
 
 const MainSectionStyles = styled.section`
-  display: none;
+  @if ${(props) => props.buttonState === true} {
+    display: block;
+  } @else {
+    display: none;
+  }
   padding: 32px;
 `;
 
-const MainSection = () => {
-  return <MainSectionStyles>main styles</MainSectionStyles>;
+const MainSection = ({ transformY }) => {
+  return (
+    <MainSectionStyles buttonState={transformY}>main styles</MainSectionStyles>
+  );
 };
 
 export default MainSection;
