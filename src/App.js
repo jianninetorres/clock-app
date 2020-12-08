@@ -31,7 +31,7 @@ const App = () => {
   const [dayOfWeek, setDayOfWeek] = useState(null);
   const [dayOfYear, setDayOfYear] = useState(null);
   const [weekNumber, setweekNumber] = useState(null);
-  const [timezone, setTimezone] = useState(null);
+  const [timezoneAbbr, setTimezoneAbbr] = useState(null);
   const [icon, setIcon] = useState(null);
   const [backgroundImage, setBackgroundImage] = useState(null);
   const [greetingVisibility, setGreetingVisibility] = useState(false);
@@ -59,7 +59,7 @@ const App = () => {
       setDayOfWeek(data.day_of_week);
       setDayOfYear(data.day_of_year);
       setweekNumber(data.week_number);
-      setTimezone(data.abbreviation);
+      setTimezoneAbbr(data.abbreviation);
     } else {
       setErrorMessage("Uh oh");
     }
@@ -169,7 +169,7 @@ const App = () => {
         currentMinute={currentMinute}
         city={city}
         regionCode={regionCode}
-        timezone={timezone}
+        timezoneAbbr={timezoneAbbr}
         backgroundImage={backgroundImage}
         icon={icon}
         error={errorMessage}

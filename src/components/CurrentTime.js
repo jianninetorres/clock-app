@@ -47,7 +47,7 @@ const CurrentTimeStyles = styled.div`
 const CurrentTime = ({
   currentHour,
   currentMinute,
-  timezone,
+  timezoneAbbr,
   city,
   regionCode,
   greeting,
@@ -73,7 +73,7 @@ const CurrentTime = ({
           <h2>
             {hour}:{minute}
           </h2>
-          <span>{timezone}</span>
+          <span>{timezoneAbbr}</span>
         </div>
       )}
       <h3>

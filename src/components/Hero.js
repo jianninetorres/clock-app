@@ -47,7 +47,7 @@ const Hero = ({
   currentMinute,
   city,
   regionCode,
-  timezone,
+  timezoneAbbr,
   backgroundImage,
   icon,
   quote,
@@ -66,7 +66,7 @@ const Hero = ({
           <CurrentTime
             currentHour={currentHour}
             currentMinute={currentMinute}
-            timezone={timezone}
+            timezoneAbbr={timezoneAbbr}
             city={city}
             regionCode={regionCode}
             greeting={greeting}
