@@ -13,6 +13,10 @@ const QuoteStyles = styled.div`
   padding: var(--base-size);
   @media screen and (min-width: 568px) {
     padding: 0 calc(var(--base-size) * 2);
+    max-width: 540px;
+  }
+  @media screen and (min-width: 1200px) {
+    padding-top: calc(var(--base-size) * 4);
   }
 
   blockquote {
@@ -20,8 +24,11 @@ const QuoteStyles = styled.div`
     @media screen and (min-width: 768px) {
       padding-top: calc(var(--base-size) * 2);
     }
-    @media screen and (min-width: 1200px) {
-      padding-top: calc(var(--base-size) * 4);
+  }
+
+  img {
+    @media screen and (min-width: 768px) {
+      padding-top: calc(var(--base-size) * 2);
     }
   }
 

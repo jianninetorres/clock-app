@@ -11,7 +11,11 @@ const CurrentTimeStyles = styled.div`
   align-items: flex-start;
   padding: calc(var(--base-size) * 2) var(--base-size);
   @media screen and (min-width: 568px) {
-    padding: calc(var(--base-size) * 4) calc(var(--base-size) * 2);
+    padding: calc(var(--base-size) * 4) calc(var(--base-size) * 2)
+      calc(var(--base-size) * 2);
+  }
+  @media screen and (min-width: 1024px) {
+    padding-bottom: 0;
   }
 
   .greeting-container {
@@ -22,15 +26,17 @@ const CurrentTimeStyles = styled.div`
     img {
       margin-right: var(--base-size);
     }
-
-    h3 {
-      margin-bottom: 0;
-    }
   }
 
   .time-container {
     display: flex;
     align-items: baseline;
+
+    h2 {
+      @media screen and (min-width: 1024px) {
+        font-size: 10rem;
+      }
+    }
 
     span {
       @media screen and (min-width: 568px) {
@@ -44,6 +50,10 @@ const CurrentTimeStyles = styled.div`
   }
 
   p {
+    margin-bottom: 0;
+  }
+
+  h3 {
     margin-bottom: 0;
   }
 `;

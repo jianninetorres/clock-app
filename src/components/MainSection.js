@@ -3,7 +3,6 @@ import React from "react";
 import styled from "styled-components";
 
 const DivContainerStyles = styled.div`
-  padding: ${(props) => props.buttonState};
   flex: 1 1 auto;
   width: 100%;
   height: 100%;
@@ -24,15 +23,13 @@ const MainSectionStyles = styled.section`
 
   @media screen and (min-width: 568px) {
     grid-template-columns: 1fr 1fr;
-    padding: {
-      left: calc(var(--base-size) * 2);
-      right: calc(var(--base-size) * 2);
-    }
+    margin: calc(var(--base-size) * 2) auto calc(var(--base-size) * 2);
+    padding-left: calc(var(--base-size) * 2);
+    padding-right: calc(var(--base-size) * 2);
   }
 
   @media screen and (min-width: 1200px) {
     max-width: 1100px;
-    margin: 0 auto;
   }
 
   div {
@@ -41,7 +38,7 @@ const MainSectionStyles = styled.section`
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: calc(var(--base-size) * 2) var(--base-size);
+    padding: var(--base-size);
     @media screen and (min-width: 568px) {
       flex-direction: column;
       justify-content: center;
@@ -51,6 +48,9 @@ const MainSectionStyles = styled.section`
     @media screen and (min-width: 768px) {
       &:nth-child(odd) {
         border-right: 1px solid grey;
+      }
+      &:nth-child(even) {
+        padding-left: calc(var(--base-size) * 8);
       }
     }
 
@@ -80,20 +80,17 @@ const MainSection = ({
   weekNumber,
   timezone,
   icon,
+  viewport,
 }) => {
-  const isVisible = transformY === true ? "32px 0" : "0";
-  const maxHeight = transformY === true ? "50%" : 0;
+  const maxHeight =
+    transformY === true ? (viewport === "mobile" ? "55%" : "50%") : 0;
   const bgColour =
-    icon === "sun" ? "rgba(255, 255, 255, 0.8)" : "rgba(0, 0, 0, 0.8)";
+    icon === "sun" ? "rgba(255, 255, 255, 0.8)" : "rgba(0, 0, 0, 0.85)";
   const h3FontColour = icon === "sun" ? "var(--black)" : "var(--white)";
   const h4FontColour = icon === "sun" ? "var(--grey1)" : "var(--grey2)";
 
   return (
-    <DivContainerStyles
-      buttonState={isVisible}
-      maxHeight={maxHeight}
-      bgColour={bgColour}
-    >
+    <DivContainerStyles maxHeight={maxHeight} bgColour={bgColour}>
       <MainSectionStyles
         h3FontColour={h3FontColour}
         h4FontColour={h4FontColour}

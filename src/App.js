@@ -38,6 +38,7 @@ const App = () => {
   const [greetingVisibility, setGreetingVisibility] = useState(false);
   const [buttonIsClicked, setButtonIsClicked] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [viewport, setViewport] = useState("mobile");
   const wrapperRef = useRef();
 
   // ------ Call IP Address API ------ //
@@ -58,7 +59,7 @@ const App = () => {
     const data = await response.json();
 
     if (data.client_ip !== "") {
-      setDayOfWeek(data.day_of_week);
+      setDayOfWeek(data.day_of_week + 1); // Sunday starts at 0
       setDayOfYear(data.day_of_year);
       setweekNumber(data.week_number);
       setTimezoneAbbr(data.abbreviation);
@@ -97,22 +98,18 @@ const App = () => {
         setGreeting(`Good ${greetings.evening.label}`);
         setIcon(greetings.evening.icon);
         setBackgroundImage(greetings.evening.bgImage);
-        console.log(`evening, ${hour}`);
       } else if (hour < 12) {
         setGreeting(`Good ${greetings.morning.label}`);
         setIcon(greetings.morning.icon);
         setBackgroundImage(greetings.morning.bgImage);
-        console.log(`morning, ${hour}`);
       } else if (hour < 18) {
         setGreeting(`Good ${greetings.afternoon.label}`);
         setIcon(greetings.afternoon.icon);
         setBackgroundImage(greetings.afternoon.bgImage);
-        console.log(`afternoon, ${hour}`);
       } else if (hour < 25) {
         setGreeting(`Good ${greetings.evening.label}`);
         setIcon(greetings.evening.icon);
         setBackgroundImage(greetings.evening.bgImage);
-        console.log(`evening, ${hour}`);
       }
     },
     [
@@ -147,8 +144,14 @@ const App = () => {
       }, 1000);
 
       let viewport = wrapperRef.current.scrollWidth;
-      if (viewport > 500) {
+      if (viewport > 1023) {
+        setViewport("desktop");
         setGreetingVisibility(true);
+      } else if (viewport > 500) {
+        setGreetingVisibility(true);
+        setViewport("tablet");
+      } else {
+        setViewport("mobile");
       }
     }
 
@@ -181,6 +184,7 @@ const App = () => {
         dayOfYear={dayOfYear}
         weekNumber={weekNumber}
         timezone={timezone}
+        viewport={viewport}
       />
       <MainSection
         transformY={buttonIsClicked}
@@ -189,6 +193,7 @@ const App = () => {
         weekNumber={weekNumber}
         timezone={timezone}
         icon={icon}
+        viewport={viewport}
       />
     </WrapperStyles>
   );

@@ -1,7 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import bgImageDay from "../images/bg-image-daytime.jpg";
-import bgImageNight from "../images/bg-image-nighttime.jpg";
+import bgImageDayMobile from "../images/bg-image-daytime.jpg";
+import bgImageDayTablet from "../images/bg-image-daytime-tablet.jpg";
+import bgImageDayDesktop from "../images/bg-image-daytime-desktop.jpg";
+import bgImageNightMobile from "../images/bg-image-nighttime.jpg";
+import bgImageNightTablet from "../images/bg-image-nighttime-tablet.jpg";
+import bgImageNightDesktop from "../images/bg-image-nighttime-desktop.jpg";
 import CurrentTime from "./CurrentTime";
 import Quote from "./Quote";
 import Button from "./Button";
@@ -46,6 +50,12 @@ const HeroStyles = styled.div`
     color: inherit;
     padding-bottom: calc(var(--base-size) * 2);
     margin-bottom: calc(var(--base-size) * 2);
+    @media screen and (min-width: 1024px) {
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      align-items: flex-end;
+      width: 100%;
+    }
   }
 `;
 
@@ -63,13 +73,31 @@ const Hero = ({
   quoteAuthor,
   onClickButton,
   transformY,
-  dayOfWeek,
-  dayOfYear,
-  weekNumber,
   timezone,
+  viewport,
 }) => {
-  const showBgImage =
-    backgroundImage === "daylight" ? bgImageDay : bgImageNight;
+  const showBgImage = () => {
+    let bgImage;
+    if (backgroundImage === "daylight") {
+      if (viewport === "mobile") {
+        bgImage = bgImageDayMobile;
+      } else if (viewport === "tablet") {
+        bgImage = bgImageDayTablet;
+      } else if (viewport === "desktop") {
+        bgImage = bgImageDayDesktop;
+      }
+      return bgImage;
+    } else if (backgroundImage === "starlight") {
+      if (viewport === "mobile") {
+        bgImage = bgImageNightMobile;
+      } else if (viewport === "tablet") {
+        bgImage = bgImageNightTablet;
+      } else if (viewport === "desktop") {
+        bgImage = bgImageNightDesktop;
+      }
+      return bgImage;
+    }
+  };
   const wasButtonClicked = transformY === true ? "-60%" : 0;
   return (
     <HeroStyles background={showBgImage} transform={wasButtonClicked}>
