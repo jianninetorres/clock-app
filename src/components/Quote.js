@@ -27,8 +27,9 @@ const QuoteStyles = styled.div`
   }
 
   img {
+    cursor: pointer;
     @media screen and (min-width: 768px) {
-      padding-top: calc(var(--base-size) * 2);
+      margin-top: calc(var(--base-size) * 2);
     }
   }
 

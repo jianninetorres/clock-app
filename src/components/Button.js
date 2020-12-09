@@ -13,6 +13,7 @@ const ButtonStyles = styled.button`
   background-color: white;
   padding: calc(var(--base-size) / 2);
   margin: 0 var(--base-size);
+  cursor: pointer;
   @media screen and (min-width: 568px) {
     margin: 0 calc(var(--base-size) * 2);
   }
