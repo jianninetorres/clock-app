@@ -9,7 +9,6 @@ import bgImageNightDesktop from "../images/bg-image-nighttime-desktop.jpg";
 import CurrentTime from "./CurrentTime";
 import Quote from "./Quote";
 import Button from "./Button";
-import LoadingDots from "./LoadingDots";
 
 const HeroStyles = styled.div`
   background: url(${(props) => props.background}) no-repeat center center;
