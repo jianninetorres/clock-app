@@ -75,6 +75,9 @@ const Hero = ({
   buttonIsClicked,
   transformY,
   timezone,
+  dayOfWeek,
+  dayOfYear,
+  weekNumber,
   viewport,
 }) => {
   const showBgImage = () => {
@@ -115,7 +118,7 @@ const Hero = ({
             greetingVisibility={greetingVisibility}
             icon={icon}
           />
-          {timezone ? (
+          {timezone && dayOfWeek && dayOfYear && weekNumber ? (
             <Button
               background={showBgImage}
               onClickButton={onClickButton}

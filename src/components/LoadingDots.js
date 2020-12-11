@@ -2,7 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 const LoadingDotsStyles = styled.div`
-  font-size: 8rem;
+  padding: calc(var(--base-size) * 2) var(--base-size);
+
+  @media screen and (min-width: 568px) {
+    padding: calc(var(--base-size) * 4) calc(var(--base-size) * 2)
+      calc(var(--base-size) * 2);
+  }
 
   &::after {
     content: ".";
@@ -30,6 +35,10 @@ const LoadingDotsStyles = styled.div`
 `;
 
 const LoadingDots = () => {
-  return <LoadingDotsStyles className="loading"></LoadingDotsStyles>;
+  return (
+    <LoadingDotsStyles className="loading">
+      Getting more time data
+    </LoadingDotsStyles>
+  );
 };
 export default LoadingDots;
