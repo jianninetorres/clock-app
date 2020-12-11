@@ -94,7 +94,7 @@ const App = () => {
 
   const showGreeting = useCallback(
     (hour) => {
-      if (hour < 6) {
+      if (hour === 0 || hour < 6) {
         setGreeting(`Good ${greetings.evening.label}`);
         setIcon(greetings.evening.icon);
         setBackgroundImage(greetings.evening.bgImage);
