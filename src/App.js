@@ -179,6 +179,7 @@ const App = () => {
         icon={icon}
         error={errorMessage}
         onClickButton={onClickButton}
+        buttonIsClicked={buttonIsClicked}
         transformY={buttonIsClicked}
         dayOfWeek={dayOfWeek}
         dayOfYear={dayOfYear}

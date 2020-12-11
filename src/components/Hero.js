@@ -72,6 +72,7 @@ const Hero = ({
   quote,
   quoteAuthor,
   onClickButton,
+  buttonIsClicked,
   transformY,
   timezone,
   viewport,
@@ -115,7 +116,11 @@ const Hero = ({
             icon={icon}
           />
           {timezone ? (
-            <Button background={showBgImage} onClickButton={onClickButton} />
+            <Button
+              background={showBgImage}
+              onClickButton={onClickButton}
+              buttonIsClicked={buttonIsClicked}
+            />
           ) : (
             <LoadingDots />
           )}

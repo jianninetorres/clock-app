@@ -14,6 +14,7 @@ const ButtonStyles = styled.button`
   padding: calc(var(--base-size) / 2);
   margin: 0 var(--base-size);
   cursor: pointer;
+  outline: var(--grey1);
   @media screen and (min-width: 568px) {
     margin: 0 calc(var(--base-size) * 2);
   }
@@ -26,12 +27,25 @@ const ButtonStyles = styled.button`
     font-size: 1.2rem;
     font-weight: 700;
   }
+
+  img {
+    transform: ${(props) => props.arrowRotation};
+  }
 `;
 
-const Button = ({ background, onClickButton }) => {
+const Button = ({ background, onClickButton, buttonIsClicked }) => {
+  const toggleButtonText =
+    buttonIsClicked === true ? <h3>Less</h3> : <h3>More</h3>;
+  const rotateArrow =
+    buttonIsClicked === true ? "rotate(180deg)" : "rotate(0deg)";
   return (
-    <ButtonStyles type="button" background={background} onClick={onClickButton}>
-      <h3>More</h3>
+    <ButtonStyles
+      type="button"
+      background={background}
+      onClick={onClickButton}
+      arrowRotation={rotateArrow}
+    >
+      {toggleButtonText}
       <img src={arrow} alt="" />
     </ButtonStyles>
   );
