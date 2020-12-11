@@ -41,28 +41,26 @@ const App = () => {
   const [viewport, setViewport] = useState("mobile");
   const wrapperRef = useRef();
 
-  // ------ Call IP Address API ------ //
-  const getIPAddress = async (url) => {
-    const response = await fetch(url);
-    const data = await response.json();
+  const getAPIData = async (ipUrl, timeDataUrl) => {
+    // ------ Call IP Address API ------ //
+    const ipAddressResponse = await fetch(ipUrl);
+    const ipAddressData = await ipAddressResponse.json();
 
-    if (data.ip !== "") {
-      setCity(data.city);
-      setRegionCode(data.region_code);
-      setTimezone(data.time_zone);
+    if (ipAddressData.ip !== "") {
+      setCity(ipAddressData.city);
+      setRegionCode(ipAddressData.region_code);
+      setTimezone(ipAddressData.time_zone);
     }
-  };
 
-  // ------ Get time-related data ------ //
-  const getTimeData = async (url) => {
-    const response = await fetch(url);
-    const data = await response.json();
+    // ------ Get time-related data ------ //
+    const timeDataresponse = await fetch(timeDataUrl);
+    const timeData = await timeDataresponse.json();
 
-    if (data.client_ip !== "") {
-      setDayOfWeek(data.day_of_week + 1); // Sunday starts at 0
-      setDayOfYear(data.day_of_year);
-      setweekNumber(data.week_number);
-      setTimezoneAbbr(data.abbreviation);
+    if (timeData.client_ip !== "") {
+      setDayOfWeek(timeData.day_of_week + 1); // Sunday starts at 0
+      setDayOfYear(timeData.day_of_year);
+      setweekNumber(timeData.week_number);
+      setTimezoneAbbr(timeData.abbreviation);
     } else {
       setErrorMessage("Uh oh");
     }
@@ -134,8 +132,8 @@ const App = () => {
   // ------ Perform side effects after component has mounted ------ //
   useEffect(() => {
     let mounted = true;
-    getIPAddress(IP_API);
-    getTimeData(WORLDTIME_API);
+    getAPIData(IP_API, WORLDTIME_API);
+    // getTimeData(WORLDTIME_API);
     if (mounted && currentHour) {
       showGreeting(currentHour);
       // update current time every second
