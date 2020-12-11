@@ -35,10 +35,6 @@ const LoadingDotsStyles = styled.div`
 `;
 
 const LoadingDots = () => {
-  return (
-    <LoadingDotsStyles className="loading">
-      Getting more time data
-    </LoadingDotsStyles>
-  );
+  return <LoadingDotsStyles className="loading"></LoadingDotsStyles>;
 };
 export default LoadingDots;

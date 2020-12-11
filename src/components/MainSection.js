@@ -1,5 +1,5 @@
 import React from "react";
-
+import LoadingDots from "./LoadingDots";
 import styled from "styled-components";
 
 const DivContainerStyles = styled.div`
@@ -100,25 +100,33 @@ const MainSection = ({
             <h4>Current timezone</h4>
             <h3>{timezone}</h3>
           </div>
-        ) : null}
+        ) : (
+          <LoadingDots />
+        )}
         {dayOfYear ? (
           <div>
             <h4>Day of the year</h4>
             <h3>{dayOfYear}</h3>
           </div>
-        ) : null}
+        ) : (
+          <LoadingDots />
+        )}
         {dayOfWeek ? (
           <div>
             <h4>Day of the week</h4>
             <h3>{dayOfWeek}</h3>
           </div>
-        ) : null}
+        ) : (
+          <LoadingDots />
+        )}
         {weekNumber ? (
           <div>
             <h4>Week number</h4>
             <h3>{weekNumber}</h3>
           </div>
-        ) : null}
+        ) : (
+          <LoadingDots />
+        )}
       </MainSectionStyles>
     </DivContainerStyles>
   );

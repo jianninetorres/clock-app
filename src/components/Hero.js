@@ -118,15 +118,11 @@ const Hero = ({
             greetingVisibility={greetingVisibility}
             icon={icon}
           />
-          {timezone && dayOfWeek && dayOfYear && weekNumber ? (
-            <Button
-              background={showBgImage}
-              onClickButton={onClickButton}
-              buttonIsClicked={buttonIsClicked}
-            />
-          ) : (
-            <LoadingDots />
-          )}
+          <Button
+            background={showBgImage}
+            onClickButton={onClickButton}
+            buttonIsClicked={buttonIsClicked}
+          />
         </div>
       </div>
     </HeroStyles>
