@@ -73,10 +73,6 @@ const Hero = ({
   onClickButton,
   buttonIsClicked,
   transformY,
-  timezone,
-  dayOfWeek,
-  dayOfYear,
-  weekNumber,
   viewport,
 }) => {
   const showBgImage = () => {

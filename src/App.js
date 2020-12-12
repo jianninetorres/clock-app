@@ -178,10 +178,6 @@ const App = () => {
         onClickButton={onClickButton}
         buttonIsClicked={buttonIsClicked}
         transformY={buttonIsClicked}
-        dayOfWeek={dayOfWeek}
-        dayOfYear={dayOfYear}
-        weekNumber={weekNumber}
-        timezone={timezone}
         viewport={viewport}
       />
       <MainSection
