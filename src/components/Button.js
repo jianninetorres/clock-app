@@ -19,7 +19,7 @@ const ButtonStyles = styled.button`
     margin: 0 calc(var(--base-size) * 2);
   }
 
-  h3 {
+  span {
     background: url(${(props) => props.background}) no-repeat center bottom;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
@@ -35,7 +35,7 @@ const ButtonStyles = styled.button`
 
 const Button = ({ background, onClickButton, buttonIsClicked }) => {
   const toggleButtonText =
-    buttonIsClicked === true ? <h3>Less</h3> : <h3>More</h3>;
+    buttonIsClicked === true ? <span>LESS</span> : <span>MORE</span>;
   const rotateArrow =
     buttonIsClicked === true ? "rotate(180deg)" : "rotate(0deg)";
   return (
