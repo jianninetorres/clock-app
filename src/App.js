@@ -133,7 +133,8 @@ const App = () => {
   useEffect(() => {
     let mounted = true;
     getAPIData(IP_API, WORLDTIME_API);
-    if (mounted && currentHour) {
+    if (mounted && currentHour >= 0) {
+      // specify currentHour else 0 == false
       showGreeting(currentHour);
       // update current time every second
       setInterval(() => {

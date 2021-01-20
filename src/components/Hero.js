@@ -6,12 +6,14 @@ import bgImageDayDesktop from "../images/bg-image-daytime-desktop.jpg";
 import bgImageNightMobile from "../images/bg-image-nighttime.jpg";
 import bgImageNightTablet from "../images/bg-image-nighttime-tablet.jpg";
 import bgImageNightDesktop from "../images/bg-image-nighttime-desktop.jpg";
+import bgImageDusk from "../images/bg-image-dusk.jpg";
 import CurrentTime from "./CurrentTime";
 import Quote from "./Quote";
 import Button from "./Button";
 
 const HeroStyles = styled.div`
-  background: url(${(props) => props.background}) no-repeat center center;
+  background: url(${(props) => props.background || bgImageDusk}) no-repeat
+    center center;
   background-size: cover;
   padding: calc(var(--base-size) * 2) 0;
   position: relative;
